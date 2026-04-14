@@ -20,7 +20,7 @@
 ```
 
 ### 实现
-在此中布局中, 设置 wrapper 宽度为 100% 给定父层一个明确宽度。如果父层为 flex 布局，则设置文本节点为 `flex-shrink 1` 也为关键，默认小程序下 `flex-shrink 1`，而 RN 为 `flex-shrink 0`，这里需要指定为 1 使得 text 能够在外层 view 下收缩，而使得 text 随文本长度变大撑开最后的 view。
+在此中布局中, 设置 wrapper 宽度为 100% 给定父层一个明确宽度。如果父层为 flex 布局，则设置文本节点为 `flex-shrink 1` 也为关键，默认 flex item 节点小程序 `flex-shrink 1`，而 RN 为 `flex-shrink 0`，这里需要指定为 1 使得 text 能够在外层 view 下收缩，而使得 text 随文本长度变大撑开最后的 view。
 
 ```html
 <template>
@@ -37,9 +37,9 @@
   width 100%
 .text-node
   /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
+  flex-shrink 1
   /* @mpx-else */
   display block
-  flex-shrink 1
   overflow hidden
   white-space nowrap
   text-overflow ellipsis

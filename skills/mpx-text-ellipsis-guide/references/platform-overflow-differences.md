@@ -21,7 +21,7 @@
 #### text-like 节点
 
 1. `span` 节点， skyline 下可内嵌 `image` 节点，其始终为 inline 特性，因此不应当承担布局容器职责。
-2. `special-text` 和 `rich-text` 节点，是一个在小程序中使用 `span` 包裹，在 RN 中使用 `text` 匊裹的副文本节点组件，可将其作为布局容器来建立省略边界，其接受一个 text 属性作为文本内容，其余可以将其看作一个 `text` 节点。
+2. `special-text` 和 `rich-text` 节点，是一个在小程序中使用 `span` 包裹，在 RN 中使用 `text` 包裹的副文本节点组件。其文本内容通过 `text` 属性传入；在省略能力、行数控制等文本行为上，可按 `text` 节点理解。
 
 #### span 节点的布局边界问题
 
@@ -74,7 +74,7 @@
 ```
 
 #### 多平台适配
-只对小程序（webview、skyline）生效。
+以下样式分支分别在对应平台生效。
 
 ```css
 .text {
@@ -160,6 +160,7 @@
 </template>
 
 <style lang="stylus">
+.text-node
   /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
   /* @mpx-else */
   display block
@@ -186,10 +187,10 @@
 
 ```css
 .text-node {
-  white-space: normal
-  display: -webkit-box
-  -webkit-box-orient: vertical
-  -webkit-line-clamp: 2
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 ```
 
@@ -281,8 +282,7 @@
 ```html
 <template>
   <view class="wrapper">
-    <rich-text class="text-node" max-lines@wx="1" overflow@wx="ellipsis" numberOfLines@ios|android|harmony="1" ellipsizeMode@ios|android|harmony="tail">这是一个文本节点</rich-text>
-  </view>
+    <rich-text class="text-node" text="这是一个文本节点" max-lines@wx="1" overflow@wx="ellipsis" numberOfLines@ios|android|harmony="1" ellipsizeMode@ios|android|harmony="tail" />
 </template>
 
 <style lang="stylus">
