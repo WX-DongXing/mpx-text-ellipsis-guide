@@ -43,6 +43,19 @@ skills/mpx-text-ellipsis-guide/
 - 排查 text-like 边界问题：
   `使用 $mpx-text-ellipsis-guide 检查这个 rich-text 外层为什么不能作为省略边界`
 
+## 隐性使用说明
+
+不显式指定 skill 时，也可以直接描述问题。下面这些表述通常会自然命中这个 skill：
+
+- `这个 Mpx 组件在 RN 上单行省略不生效，帮我检查原因`
+- `帮我修复这段标题在 skyline 下不打点的问题，尽量最小改动`
+- `给我设计一个兼容 webview、skyline 和 RN 的多行文本省略布局`
+- `为什么这段 rich-text 放在外层后，省略边界不生效`
+- `对比一下 Mpx 在 webview、skyline 和 RN 上的文本省略差异`
+- `这个列表项里文本把右侧按钮撑开了，帮我处理成可收缩并省略`
+- `帮我判断这段代码的文本省略链路有没有问题`
+- `我需要一个左侧图标、右侧标题单行省略的跨端方案`
+
 ## License
 
 MIT
