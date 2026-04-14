@@ -241,13 +241,12 @@
 ```
 
 ### RN
-对 text 添加 `ellipsizeMode` 属性，溢出打点则将其值设置为 tail，无需设置其他样式。
-其中 @ios|android|harmony 表示在 RN 下生效。
+RN 下 `ellipsizeMode` 默认为 `tail`，单行或多行省略通常无需额外设置该属性，若设置了该属性其他值，则不会按照预期在末尾溢出打点。
 
 ```html
 <template>
   <view class="wrapper">
-    <text class="text-node" ellipsizeMode@ios|android|harmony="tail">这是一个文本节点</text>
+    <text class="text-node">这是一个文本节点</text>
   </view>
 </template>
 ```
@@ -262,7 +261,7 @@
 ```html
 <template>
   <view class="wrapper">
-    <text class="text-node" max-lines@wx="1" overflow@wx="ellipsis" numberOfLines@ios|android|harmony="1" ellipsizeMode@ios|android|harmony="tail">这是一个文本节点</text>
+    <text class="text-node" max-lines@wx="1" overflow@wx="ellipsis" numberOfLines@ios|android|harmony="1">这是一个文本节点</text>
   </view>
 </template>
 
@@ -282,7 +281,8 @@
 ```html
 <template>
   <view class="wrapper">
-    <rich-text class="text-node" text="这是一个文本节点" max-lines@wx="1" overflow@wx="ellipsis" numberOfLines@ios|android|harmony="1" ellipsizeMode@ios|android|harmony="tail" />
+    <rich-text class="text-node" text="这是一个文本节点" max-lines@wx="1" overflow@wx="ellipsis" numberOfLines@ios|android|harmony="1" />
+  </view>
 </template>
 
 <style lang="stylus">
@@ -303,7 +303,7 @@
 ```html
 <template>
   <view class="wrapper">
-    <text class="text-node" max-lines@wx="2" overflow@wx="ellipsis" numberOfLines@ios|android|harmony="2" ellipsizeMode@ios|android|harmony="tail">这是一个文本节点</text>
+    <text class="text-node" max-lines@wx="2" overflow@wx="ellipsis" numberOfLines@ios|android|harmony="2">这是一个文本节点</text>
   </view>
 </template>
 

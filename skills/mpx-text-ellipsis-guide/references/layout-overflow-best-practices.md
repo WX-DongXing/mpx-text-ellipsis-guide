@@ -26,7 +26,7 @@
 <template>
   <view class="wrapper">
     <view>view</view>
-    <text class="text-node" max-lines@wx="1" overflow@wx="ellipsis" numberOfLines@ios|android|harmony="1" ellipsizeMode@ios|android|harmony="tail">这是一个文本节点</text>
+    <text class="text-node" max-lines@wx="1" overflow@wx="ellipsis" numberOfLines@ios|android|harmony="1">这是一个文本节点</text>
     <view>view</view>
   </view>
 </template>
@@ -71,9 +71,8 @@
 <template>
   <view class="wrapper">
     <text class="title {{subTitle ? 'title-single' : 'title-multi'}}" max-lines@wx="{{subTitle ? 1 : 2}}"
-      overflow@wx="ellipsis" numberOfLines@ios|android|harmony="{{subTitle ? 1 : 2}}"
-      ellipsizeMode@ios|android|harmony="tail" >{{ title }}</text>
-    <text wx:if="{{subTitle}}" class="sub-title" max-lines@wx="1" overflow@wx="ellipsis" numberOfLines@ios|android|harmony="1" ellipsizeMode@ios|android|harmony="tail">{{ subTitle }}</text>
+      overflow@wx="ellipsis" numberOfLines@ios|android|harmony="{{subTitle ? 1 : 2}}" >{{ title }}</text>
+    <text wx:if="{{subTitle}}" class="sub-title" max-lines@wx="1" overflow@wx="ellipsis" numberOfLines@ios|android|harmony="1">{{ subTitle }}</text>
   </view>
 </template>
 
