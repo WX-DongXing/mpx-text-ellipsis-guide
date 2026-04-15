@@ -108,3 +108,92 @@
   font-size 24rpx
 </style>
 ```
+
+## 模式 3：image、text 与 text-like 混合布局
+
+### 描述
+
+- 混合布局，左侧可存在 `image`，中间可同时存在普通 `text` 和循环渲染的 `text-like` 节点。
+- 整条混排内容作为一个整体文本流省略，而不是让其中某个片段单独承担省略。
+- 该模式适用于“图标 + 前缀文本 + 若干文本片段”整体作为一句展示的场景。
+
+### 使用前提
+
+- 目标必须是“整条混排内容统一省略”，而不是某一段独立省略。
+- 最外层节点在小程序侧应映射为 `span`，在 RN 侧应映射为 `text`，使内部内容保持同一条文本流。
+- 内部 `text`、`image`、`text-like` 节点只承担内容语义，不单独设置省略能力。
+- 行数由最外层文本流容器统一控制，可按单行或多行设置。
+
+### 结构示意
+
+```text
+┌───────────────────────────────────────────────────┐
+│ <image> <rich-text> <rich-text> <rich-text>...    │
+└───────────────────────────────────────────────────┘
+```
+
+### 前提
+需要在 mpx plugin 中对 `text-like` 节点设置 customTextRules 规则，使得 `text-like` 节点外层覆盖一个 `text` 节点满足 text layout 布局。
+
+```js
+module.exports = defineConfig({
+  pluginOptions: {
+    mpx: {
+      plugin: {
+        srcMode: 'wx',
+        customTextRules: {
+          include: [
+            resolve('node_modules/@didi/mpx-ui/src/basic-components/rich-text/rich-text.mpx'),
+            resolve('node_modules/@didi/mpx-ui/src/basic-components/special-text/index.mpx'),
+          ],
+        }
+      },
+    }
+  }
+})
+```
+
+### 实现
+
+在此布局中，内部真正承担省略的是一个统一的文本流容器。该容器在小程序侧映射为 `span`，在 RN 侧映射为 `text`，并由它统一设置行数与省略属性；内部的 `image`、`text`、`text-like` 节点仅作为混排内容存在，不再逐个设置省略。这样可以让整条混排内容作为同一条文本流统一打点，既可用于单行，也可用于多行。
+
+```html
+<template>
+  <view class="line" mpxTagName@wx="span" mpxTagName@ios|android|harmony="text" numberOfLines@ios|android|harmony="1" max-lines@wx="1" overflow@wx="ellipsis">
+    <image class="prefix-image" src="xxx" mode="heightFix" />
+    <block wx:for="{{segments}}" wx:key="index">
+      <rich-text
+        class="text"
+        text="{{item.text}}"
+      />
+    </block>
+  </view>
+</template>
+
+<style lang="stylus">
+.line
+  /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
+  /* @mpx-else */
+  display block
+  overflow hidden
+  white-space nowrap
+  text-overflow ellipsis
+  /* @mpx-endif */
+.prefix-image
+  height 32rpx
+  display inline-block
+.text
+  /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
+  /* @mpx-else */
+  display inline-block
+  /* @mpx-endif */
+</style>
+```
+
+### 变体
+
+#### segments 循环嵌套 image + text-like 场景
+该场景则只需要将 image 置于循环 block 内即可，不过在 RN 下会出现最后一个 image 依然显示的问题，**不能完美适配 RN 场景**。
+
+#### 单行复杂布局，左边普通单行布局，右边 text-like 混合布局
+最外层为 flex 布局 view，其中嵌套模式 1 布局和模式 3 布局即可。

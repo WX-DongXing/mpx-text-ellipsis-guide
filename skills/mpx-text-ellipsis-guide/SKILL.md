@@ -36,7 +36,7 @@ description: 当用户要求诊断、修复或创建 Mpx 在小程序 webview、
 1. 先判断任务类型：修复现有代码，还是设计新布局。
 2. 对现有代码先按“文本溢出打点原理”的四项检查省略链路是否成立。
 3. 涉及平台差异、属性差异或 `text-like` 节点时，再读取对应参考章节，不要把全部参考内容都搬进回答。
-4. 如果省略链路涉及 `span`、`special-text`、`rich-text` 或 `text-like` 节点承担边界职责，先读取 [platform-overflow-differences.md](references/platform-overflow-differences.md) 中“text-like 节点的布局边界”章节，再决定是否需要回退为真实 `view`。
+4. 如果省略链路涉及 `span`、`special-text`、`rich-text` 或 `text-like` 节点，先判断是否属于“整体文本流、省略挂在最外层 `span`”的混编场景；若是，优先复用最外层 `span` 统一省略方案。
 5. 如果是新布局，优先从 [layout-overflow-best-practices.md](references/layout-overflow-best-practices.md) 选择最接近的模式，再按用户指定平台补齐实现。
 
 ## 默认决策

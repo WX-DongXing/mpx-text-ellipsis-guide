@@ -20,25 +20,14 @@
 
 #### text-like 节点
 
-1. `span` 节点， skyline 下可内嵌 `image` 节点，其始终为 inline 特性，因此不应当承担布局容器职责。
+1. `span` 节点，skyline 下可内嵌 `image` 节点。其更适合作为文本流容器：在整体文本流省略场景中，可由最外层 `span` 统一承担省略；
 2. `special-text` 和 `rich-text` 节点，是一个在小程序中使用 `span` 包裹，在 RN 中使用 `text` 包裹的副文本节点组件。其文本内容通过 `text` 属性传入；在省略能力、行数控制等文本行为上，可按 `text` 节点理解。
-
-#### span 节点的布局边界问题
-
-- `mpxTagName@wx="span"` 映射出的 `span` 节点，其特性表现上始终为 inline 特性，若存在 `span` 嵌套 `span`、`rich-text`、`special-text` 场景，通常对最外层 `span` 设置为边界容器通常不生效。
-
-排查这类问题时，可优先观察以下信号：
-
-- 某一层是否为 `span` 节点，是否对其尝试声明文本溢出相关能力，诸如 overflow: hidden、text-overflow: ellipsis、white-space: nowrap 等样式或等效样式。
-- 其中是否存在 `span`、`rich-text`、`special-text` 节点
-
-处理原则：
-
-- 让承担布局职责的那一层回到真实 `view`，由它负责明确边界、剩余空间分配、收缩和裁剪。
-- 将 `max-lines`、`overflow="ellipsis"`、`numberOfLines`、`ellipsizeMode` 等文本省略能力放在内部真实 `text` 或 text-like 节点上。
 
 ### 属性条件编译
 组件属性添加 `@wx` 表示在小程序（webview、skyline）生效，`@ios|android|harmony` 表示在 RN 下生效。
+
+### 组件映射编译
+节点添加 `mpxTagName` 属性，用于指定节点在编译为产物时不同平台的映射节点。如 `mpxTagName@wx="span"` 则表示在编译为小程序时将该节点映射为 `span` 节点，`mpxTagName@ios|android|harmony="text"` 则表示在 RN 下映射为 `text` 节点，常用于整体文本流的 `text-like` 混编场景。
 
 ### 样式条件编译
 
