@@ -21,8 +21,10 @@ description: 当用户要求诊断、修复或创建 Mpx 在小程序 webview、
 
 ## 按需读取的参考
 
-- 平台能力、属性差异、`text-like` 边界问题、单一文本最佳实践：读 [platform-overflow-differences.md](references/platform-overflow-differences.md)
-- 常见布局模板与示例代码：读 [layout-overflow-best-practices.md](references/layout-overflow-best-practices.md)
+- `span`、`text-like`、整体文本流混排：读 [text-flow-and-span.md](references/text-flow-and-span.md)
+- 行数控制、溢出裁剪、平台属性差异：读 [platform-line-count-and-clipping.md](references/platform-line-count-and-clipping.md)
+- 基础跨平台写法与最小示例：读 [basic-cross-platform-examples.md](references/basic-cross-platform-examples.md)
+- 布局模式索引：读 [layout-overflow-best-practices.md](references/layout-overflow-best-practices.md)
 
 ## 行为约束
 
@@ -35,9 +37,9 @@ description: 当用户要求诊断、修复或创建 Mpx 在小程序 webview、
 
 1. 先判断任务类型：修复现有代码，还是设计新布局。
 2. 对现有代码先按“文本溢出打点原理”的四项检查省略链路是否成立。
-3. 涉及平台差异、属性差异或 `text-like` 节点时，再读取对应参考章节，不要把全部参考内容都搬进回答。
-4. 如果省略链路涉及 `span`、`special-text`、`rich-text` 或 `text-like` 节点，先判断是否属于“整体文本流、省略挂在最外层 `span`”的混编场景；若是，优先复用最外层 `span` 统一省略方案。
-5. 如果是新布局，优先从 [layout-overflow-best-practices.md](references/layout-overflow-best-practices.md) 选择最接近的模式，再按用户指定平台补齐实现。
+3. 涉及平台差异、属性差异或 `text-like` 节点时，只读取当前问题需要的那一份参考，不要一次性读取全部 references。
+4. 如果省略链路涉及 `span`、`special-text`、`rich-text` 或 `text-like` 节点，优先读取 [text-flow-and-span.md](references/text-flow-and-span.md) 判断是否属于“整体文本流、省略挂在最外层 `span`”的混编场景。
+5. 如果是新布局，先读取 [layout-overflow-best-practices.md](references/layout-overflow-best-practices.md) 选择最接近的模式，再按需展开对应模式文件，如果不能匹配任何模式则根据用户要求参考最佳实践组合出合理方案。
 
 ## 默认决策
 
