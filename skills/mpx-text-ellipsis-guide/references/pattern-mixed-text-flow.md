@@ -14,7 +14,9 @@
 
 ## 前提配置
 
-需要在 mpx plugin 中对 `text-like` 节点设置 `customTextRules`，使其满足 text layout 布局。
+需要在 mpx plugin 中对 `text-like` 节点设置 `customTextRules`，使其满足 text layout 布局，在 RN 下 `text-like` 没有符合预期时给用户以提示。
+
+。
 
 ```js
 module.exports = defineConfig({
