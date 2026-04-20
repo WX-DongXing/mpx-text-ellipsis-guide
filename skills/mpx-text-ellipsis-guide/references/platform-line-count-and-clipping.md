@@ -1,5 +1,40 @@
 # 行数控制与溢出裁剪
 
+## 文本块级元素
+
+### webview && skyline
+
+```html
+<template>
+  <view class="wrapper">
+    <text class="text-node">这是一个文本节点</text>
+  </view>
+</template>
+
+<style lang="stylus">
+.text-node
+  display block
+</style>
+```
+
+### 跨平台适配
+
+```html
+<template>
+  <view class="wrapper">
+    <text class="text-node">这是一个文本节点</text>
+  </view>
+</template>
+
+<style lang="stylus">
+.text-node
+  /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
+  /* @mpx-else */
+  display block
+  /* @mpx-endif */
+</style>
+```
+
 ## 行数控制差异
 
 ### webview

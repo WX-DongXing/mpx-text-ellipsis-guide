@@ -14,7 +14,7 @@
 
 ## 前提配置
 
-需要在 mpx plugin 中对 `text-like` 节点设置 `customTextRules`，使其满足 text layout 布局，在 RN 下 `text-like` 没有符合预期时给用户以提示。
+需要在 mpx plugin 中对 `text-like` 富文本节点设置 `customTextRules`，使其满足 text layout 布局，在 RN 下 `text-like` 没有符合预期时给用户以提示。
 
 。
 
@@ -41,14 +41,24 @@ module.exports = defineConfig({
 ```html
 <template>
   <view class="wrapper">
-    <view class="line" mpxTagName@wx="span" mpxTagName@ios|android|harmony="text" numberOfLines@ios|android|harmony="{{lineCount || 1}}" max-lines@wx="{{lineCount || 1}}" overflow@wx="ellipsis">
+    <view class="line" mpxTagName@wx="span" mpxTagName@ios|android|harmony="text" numberOfLines@ios|android|harmony="1" max-lines@wx="1" overflow@wx="ellipsis">
       <image class="prefix-image" src="xxx" mode="heightFix" />
       <block wx:for="{{segments}}" wx:key="index">
-        <rich-text class="text" text="{{item.text}}" />
+        <rich-text wx:class="{{textClass}}" text="{{item.text}}" />
       </block>
     </view>
   </view>
 </template>
+
+<script setup lang="ts">
+const isSkyline = useSkyline()
+
+const textClass = computed(() => `text ${isSkyline.value ? 'text-skyline' : ''}`)
+
+defineExpose({
+  textClass
+})
+</script>
 
 <style lang="stylus">
 .wrapper
@@ -65,9 +75,8 @@ module.exports = defineConfig({
   height 32rpx
   display inline-block
 .text
-  /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
-  /* @mpx-else */
+  font-size 24rpx
+.text-skyline
   display inline-block
-  /* @mpx-endif */
 </style>
 ```

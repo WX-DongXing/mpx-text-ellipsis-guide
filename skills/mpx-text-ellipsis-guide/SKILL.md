@@ -5,26 +5,29 @@ description: 当用户要求诊断、修复或创建 Mpx 在小程序 webview、
 
 # 跨平台文本溢出打点指引
 
-用于两类任务：
+## 适用场景
+当用户提到以下任一类问题时使用：
 
-1. 检查并修复现有 Mpx 跨端文本省略问题。
-2. 根据布局描述设计可跨端工作的文本省略方案。
+1. 现有 Mpx 跨端文本在 webview、skyline 或 RN 上出现超长、省略、打点不生效的问题时。
+2. 要求支持单行或多行省略时。
+3. 需要创建标题、文本、副文本等文本类节点时。
+4. 需要创建的布局中存在文本类节点时。
 
 ## 文本溢出打点原理
 
 文本省略只有在以下四项同时成立时才可靠生效：
 
 1. 明确边界：文本所在盒子必须有真实可计算的宽度。
-2. 允许收缩：文本所在盒子不能被内容无限撑开，必要时应具备 `flex-shrink: 1`、`max-width` 等收缩条件。
+2. 允许收缩：文本所在盒子不能被内容无限撑开。
 3. 指定行数：必须明确是单行还是多行省略。
 4. 真实裁剪：承担省略的节点或其容器必须具备真实裁剪与省略能力。
 
 ## 按需读取的参考
 
-- `span`、`text-like`、整体文本流混排：读 [text-flow-and-span.md](references/text-flow-and-span.md)
 - 行数控制、溢出裁剪、平台属性差异：读 [platform-line-count-and-clipping.md](references/platform-line-count-and-clipping.md)
-- 基础跨平台写法与最小示例：读 [basic-cross-platform-examples.md](references/basic-cross-platform-examples.md)
+- 基础跨平台最小单行实现：读 [platform-basic-single-line.md](references/platform-basic-single-line.md)
 - 布局模式索引：读 [layout-overflow-best-practices.md](references/layout-overflow-best-practices.md)
+- `span`、`text-like` 副文本、整体文本流混排：读 [text-flow-and-span.md](references/text-flow-and-span.md)
 
 ## 行为约束
 
@@ -38,15 +41,15 @@ description: 当用户要求诊断、修复或创建 Mpx 在小程序 webview、
 1. 先判断任务类型：修复现有代码，还是设计新布局。
 2. 对现有代码先按“文本溢出打点原理”的四项检查省略链路是否成立。
 3. 涉及平台差异、属性差异或 `text-like` 节点时，只读取当前问题需要的那一份参考，不要一次性读取全部 references。
-4. 如果省略链路涉及 `span`、`special-text`、`rich-text` 或 `text-like` 节点，优先读取 [text-flow-and-span.md](references/text-flow-and-span.md) 判断是否属于“整体文本流、省略挂在最外层 `span`”的混编场景。
+4. 如果省略链路涉及 `span`、`special-text`、`rich-text` 或 `text-like` 富文本节点，优先读取 [text-flow-and-span.md](references/text-flow-and-span.md) 判断是否属于“整体文本流、省略挂在最外层 `span`”的混编场景。
 5. 如果是新布局，先读取 [layout-overflow-best-practices.md](references/layout-overflow-best-practices.md) 选择最接近的模式，再按需展开对应模式文件，如果不能匹配任何模式则根据用户要求参考最佳实践组合出合理方案。
 
 ## 默认决策
 
-- 用户未明确指定时，默认处理第一个 `text` 或 `text-like` 节点。
+- 用户未明确指定时，默认处理第一个 `text` 或 `text-like` 富文本节点。
 - 用户未明确指定平台时，默认按全平台适配处理。
 - 用户未明确指定行数时，默认按单行省略处理。
-- 用户未明确指定节点类型时，默认使用真实 `text`；只有用户明确要求或现有代码已使用时，才采用 `text-like`。
+- 用户未明确指定节点类型时，默认使用 `text` 节点；只有用户明确要求或现有代码已使用时，才采用 `text-like` 富文本节点。
 
 ## 输出
 

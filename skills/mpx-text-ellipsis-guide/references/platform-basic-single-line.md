@@ -1,39 +1,4 @@
-# 基础跨平台示例
-
-## 文本块级元素
-
-### webview && skyline
-
-```html
-<template>
-  <view class="wrapper">
-    <text class="text-node">这是一个文本节点</text>
-  </view>
-</template>
-
-<style lang="stylus">
-.text-node
-  display block
-</style>
-```
-
-### 跨平台适配
-
-```html
-<template>
-  <view class="wrapper">
-    <text class="text-node">这是一个文本节点</text>
-  </view>
-</template>
-
-<style lang="stylus">
-.text-node
-  /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
-  /* @mpx-else */
-  display block
-  /* @mpx-endif */
-</style>
-```
+# 基础跨平台最小单行实现
 
 ## 单一 text 跨平台最佳实践
 

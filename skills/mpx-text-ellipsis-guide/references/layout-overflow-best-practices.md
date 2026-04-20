@@ -2,7 +2,7 @@
 
 根据用户描述选择最接近的模式，再读取对应参考：
 
-- 普通单行剩余空间省略：读 [pattern-basic-single-line.md](pattern-basic-single-line.md)
+- flex 单行文本布局：读 [pattern-flex-single-line.md](pattern-flex-single-line.md)
 - 主副标题切换单行/多行：读 [pattern-title-subtitle.md](pattern-title-subtitle.md)
 - `image`、`text`、`text-like` 作为整体文本流统一省略：读 [pattern-mixed-text-flow.md](pattern-mixed-text-flow.md)
 
