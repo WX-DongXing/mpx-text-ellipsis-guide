@@ -36,22 +36,22 @@ references/
 
 推荐用法：
 
-- `使用 $mpx-text-ellipsis-guide 检查这个 Mpx 组件为什么在 RN 上单行省略不生效`
-- `使用 $mpx-text-ellipsis-guide 修复这段标题在 skyline 下不打点的问题，按最小改动处理`
-- `使用 $mpx-text-ellipsis-guide 设计一个标题和副文本都支持跨平台省略的布局`
-- `使用 $mpx-text-ellipsis-guide 判断这个 rich-text / span / image 混排场景应该整体省略还是局部省略`
-- `使用 $mpx-text-ellipsis-guide 对比 webview、skyline、支付宝小程序和 RN 的行数控制与省略能力`
+- 使用 `$mpx-text-ellipsis-guide` 检查这个 Mpx 组件为什么在 RN 上单行省略不生效
+- 使用 `$mpx-text-ellipsis-guide` 修复这段标题在 skyline 下不打点的问题，按最小改动处理
+- 使用 `$mpx-text-ellipsis-guide` 设计一个标题和副文本都支持跨平台省略的布局 
+- 使用 `$mpx-text-ellipsis-guide` 判断这个 rich-text / span / image 混排场景应该整体省略还是局部省略
+- 使用 `$mpx-text-ellipsis-guide` 对比 webview、skyline、支付宝小程序和 RN 的行数控制与省略能力
 
 ## 隐性使用示例
 
 不显式指定 skill 时，也可以直接描述问题：
 
-- `这个 Mpx 组件在 RN 上单行省略不生效，帮我检查原因`
-- `帮我修复这段标题在 skyline 下不打点的问题，尽量最小改动`
-- `我需要一个标题和副文本都能跨平台打点的布局`
-- `为什么这个 rich-text 放在 span 里整体省略不符合预期`
-- `这个列表项里文本把右侧按钮撑开了，帮我处理成可收缩并省略`
-- `帮我判断这段代码的文本省略链路有没有问题`
+- 这个 Mpx 组件在 RN 上单行省略不生效，帮我检查原因
+- 我需要修复这段标题在 skyline 下不打点的问题，尽量最小改动
+- 我需要一个标题和副文本都能跨平台打点的布局 
+- 为什么这个 rich-text 放在 span 里整体省略不符合预期
+- 这个列表项里文本把右侧按钮撑开了，帮我处理成可收缩并省略
+- 我需要判断这段代码的文本省略链路有没有问题
 
 ## License
 
