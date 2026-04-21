@@ -11,7 +11,6 @@
 - 外层需要明确宽度并裁剪溢出。
 - 主标题按副标题是否存在切换行数。
 - 副标题单独作为第二个 `text` 节点处理。
-- 如果需要支持副文本，则可直接将 `text` 替换为 `rich-text` 等富文本节点即可。
 
 ## 示例
 
@@ -26,7 +25,6 @@
 <style lang="stylus">
 .wrapper
   width 100%
-  overflow hidden
 .title-single,
 .sub-title
   /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */

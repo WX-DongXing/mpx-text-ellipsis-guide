@@ -17,9 +17,9 @@
 ```html
 <template>
   <view class="wrapper">
-    <view>view</view>
+    <view class="prefix">prefix</view>
     <text class="text-node" max-lines@wx="1" overflow@wx="ellipsis" numberOfLines@ios|android|harmony="1">这是一个文本节点</text>
-    <view>view</view>
+    <view class="suffix">suffix</view>
   </view>
 </template>
 
@@ -36,5 +36,8 @@
   white-space nowrap
   text-overflow ellipsis
   /* @mpx-endif */
+.prefix,
+.suffix
+  flex none
 </style>
 ```
