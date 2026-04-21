@@ -44,7 +44,7 @@ module.exports = defineConfig({
     <view class="line" mpxTagName@wx="span" mpxTagName@ios|android|harmony="text" numberOfLines@ios|android|harmony="1" max-lines@wx="1" overflow@wx="ellipsis">
       <image class="prefix-image" src="xxx" mode="heightFix" />
       <block wx:for="{{segments}}" wx:key="index">
-        <rich-text wx:class="{{textClass}}" text="{{item.text}}" />
+        <rich-text wx:class="{{textClass}}" text="{{item.text}}" verticalAlign@ali="white-space:nowrap;" />
       </block>
     </view>
   </view>
