@@ -1,7 +1,7 @@
 interface:
   display_name: "Mpx Text Ellipsis Guide"
   short_description: "诊断、修复和设计 Mpx 跨端文本省略方案指南"
-  default_prompt: "使用 $mpx-text-ellipsis-guide 诊断、修复或设计 Mpx 在 webview、skyline 和 RN 上的文本省略方案。"
+  default_prompt: "使用 $mpx-text-ellipsis-guide 诊断、修复或设计 Mpx 在微信小程序 webview、skyline、支付宝小程序 和 RN 上的文本省略方案。"
 
 policy:
   allow_implicit_invocation: true

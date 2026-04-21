@@ -2,7 +2,7 @@
 
 ## 文本块级元素
 
-### webview && skyline
+### webview && skyline && ali
 
 ```html
 <template>
@@ -37,7 +37,7 @@
 
 ## 行数控制差异
 
-### webview
+### webview && ali
 
 - 单行：对 `text` 设置 `white-space: nowrap;`
 - 多行：对 `text` 设置 `display: -webkit-box;`、`-webkit-box-orient: vertical;`、`-webkit-line-clamp`
@@ -54,7 +54,7 @@
 
 ## 溢出裁剪差异
 
-### webview
+### webview && ali
 
 - 对 `text` 设置 `overflow: hidden;` 与 `text-overflow: ellipsis;`
 
@@ -68,5 +68,6 @@
 
 ## 属性条件编译
 
-- `@wx` 表示小程序（webview、skyline）生效。
+- `@wx` 表示微信小程序（webview、skyline）生效。
+- `@ali` 表示支付宝小程序生效。
 - `@ios|android|harmony` 表示 RN 生效。

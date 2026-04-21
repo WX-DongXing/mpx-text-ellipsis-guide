@@ -6,8 +6,8 @@
 
 ## 平台关注点
 
-- 小程序 webview：更接近 CSS 文本流语义。
-- 小程序 skyline：`span` 可内嵌 `image`，适合表达混排文本流。
+- 微信小程序 webview 与 支付宝小程序 ali：更接近 CSS 文本流语义。
+- 微信小程序 skyline：`span` 可内嵌 `image`，适合表达混排文本流。
 - RN：最终需落到 `text` 语义容器，避免按 Web 块级布局心智处理。
 
 ## text-like 节点

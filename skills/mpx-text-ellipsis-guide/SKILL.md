@@ -1,6 +1,6 @@
 ---
 name: mpx-text-ellipsis-guide
-description: 当用户要求诊断、修复或创建 Mpx 在小程序 webview、skyline 或 RN 上的文本省略问题，且涉及单行省略、多行省略场景时使用。
+description: 当用户要求诊断、修复或创建 Mpx 在微信小程序 webview、skyline、支付宝小程序 或 RN 上的文本省略问题，且涉及单行省略、多行省略场景时使用。
 ---
 
 # 跨平台文本溢出打点指引
@@ -8,7 +8,7 @@ description: 当用户要求诊断、修复或创建 Mpx 在小程序 webview、
 ## 适用场景
 当用户提到以下任一类问题时使用：
 
-1. 现有 Mpx 跨端文本在小程序 webview、skyline 或 RN 上出现超长、省略、打点不生效的问题时。
+1. 现有 Mpx 跨端文本在微信小程序 webview、skyline、支付宝小程序 或 RN 上出现超长、省略、打点不生效的问题时。
 2. 需要创建文本、标题、副文本等文本类节点，并要求支持单行或多行跨平台省略时。
 
 ## 文本溢出打点原理
